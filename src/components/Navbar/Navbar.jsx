@@ -39,9 +39,9 @@ const Navbar = () => {
       >
       
         <div>
-          <h1 className="font-bold text-2xl">Code Hub</h1>
+          <h1 className="font-bold text-2xl text-red-600">Code Hub</h1>
         </div>
-        {/* Menu section */}
+    
         <div className="hidden lg:block"> 
           <ul className="flex items-center gap-3">
             {NavbarMenu.map((menu) => (
