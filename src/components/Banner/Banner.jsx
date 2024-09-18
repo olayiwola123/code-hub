@@ -22,7 +22,7 @@ const Banner = () => {
             className="w-[350px] md:max-w-[450px] object-cover drop-shadow"
           />
         </div>
-        {/* Banner Text */}
+     
         <div className="flex flex-col justify-center">
           <div className="text-center md:text-left space-y-12">
             <motion.h1
