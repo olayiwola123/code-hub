@@ -78,7 +78,6 @@
 import React, { useState } from "react";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 const NavbarMenu = [
   { id: 1, title: "Home", path: "/" },
@@ -110,13 +109,13 @@ const Navbar = () => {
           <ul className="flex items-center gap-3">
             {NavbarMenu.map((menu) => (
               <li key={menu.id}>
-                <Link
+                <a
                   href={menu.path}
                   className="inline-block py-2 px-3 hover:text-secondary relative group cursor-pointer"
                 >
                   <div className="w-2 h-2 bg-secondary absolute mt-4 rounded-full left-1/2 -translate-x-1/2 top-1/2 bottom-0 group-hover:block hidden"></div>
                   {menu.title}
-                </Link>
+                </a>
               </li>
             ))}
             <button className="primary-btn">Sign In</button>
