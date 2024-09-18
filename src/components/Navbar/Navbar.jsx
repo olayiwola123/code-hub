@@ -78,13 +78,14 @@
 import React, { useState } from "react";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const NavbarMenu = [
   { id: 1, title: "Home", path: "/" },
   { id: 2, title: "Services", link: "#" },
   { id: 3, title: "About Us", link: "#" },
   { id: 4, title: "Our Team", link: "#" },
-  { id: 5, title: "Contact Us", link: "#" },
+  { id: 5, title: "Contact Us", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -95,7 +96,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-50"> {/* Increased z-index to ensure it's above other content */}
+    <nav className="relative z-50"> 
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,13 +110,13 @@ const Navbar = () => {
           <ul className="flex items-center gap-3">
             {NavbarMenu.map((menu) => (
               <li key={menu.id}>
-                <a
+                <Link
                   href={menu.path}
-                  className="inline-block py-2 px-3 hover:text-secondary relative group"
+                  className="inline-block py-2 px-3 hover:text-secondary relative group cursor-pointer"
                 >
                   <div className="w-2 h-2 bg-secondary absolute mt-4 rounded-full left-1/2 -translate-x-1/2 top-1/2 bottom-0 group-hover:block hidden"></div>
                   {menu.title}
-                </a>
+                </Link>
               </li>
             ))}
             <button className="primary-btn">Sign In</button>

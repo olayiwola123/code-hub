@@ -76,9 +76,10 @@ const Footer = () => {
                 Go
               </button>
             </div>
-            {/* social icons */}
+           
             <div className="flex space-x-6 py-3">
-              <a href="https://chat.whatsapp.com/FQSKgJ5f1eIAhlyF5sVym0">
+              <a href="https://chat.whatsapp.com/FQSKgJ5f1eIAhlyF5sVym0"
+              target="_blank">
                 <FaWhatsapp className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
               <a href="https://www.instagram.com/the.coding.journey/">
@@ -87,7 +88,7 @@ const Footer = () => {
               <a href="https://thecodingjourney.com/">
                 <TbWorldWww className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
-              <a href="https://www.youtube.com/@TheCodingJourney">
+              <a href="https://www.youtube.com/@user-pe2tg7im6t">
                 <FaYoutube className="cursor-pointer hover:text-primary hover:scale-105 duration-200" />
               </a>
             </div>

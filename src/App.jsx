@@ -1,24 +1,24 @@
+
 import React from "react";
-import Hero from "./components/Hero/Hero";
-import Services from "./components/Services/Services";
-import Banner from "./components/Banner/Banner";
-import Subscribe from "./components/Subscribe/Subscribe";
-import Banner2 from "./components/Banner/Banner2";
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LandingPage from "./Pages/LandingPage";
+import Contact from "./Pages/Contact";
+import MainLayout from "./layouts/MainLayout";
+
 
 const App = () => {
   return (
-    <main className="overflow-x-hidden bg-white text-dark">
-      {/* <Navbar/> */}
-      <Hero />
-      <Services />
-      <Banner />
-      <Subscribe />
-      <Banner2 />
-      <Footer />
-    </main>
+    <Router>
+      <Routes>
+    
+        <Route path="/" element={<LandingPage />} />
+
+      
+        <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+      </Routes>
+    </Router>
   );
 };
 
 export default App;
+
