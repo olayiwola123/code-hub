@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero/Hero";
 import Services from "../components/Services/Services";
 import Banner from "../components/Banner/Banner";
@@ -7,9 +8,13 @@ import Banner2 from "../components/Banner/Banner2";
 import Footer from "../components/Footer/Footer";
 import About from "../components/Banner/About";
 
+import PulsingTextLoader from "../Loader/PulsingTextLoader";
+import CompanyLoader from "../Loader/CompanyLoader";
+
 const LandingPage = () => {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-  
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function() {
       var s1 = document.createElement("script"),
@@ -20,19 +25,31 @@ const LandingPage = () => {
       s1.setAttribute("crossorigin", "*");
       s0.parentNode.insertBefore(s1, s0);
     })();
+    
+   
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); 
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <main className="overflow-x-hidden bg-white text-dark">
-      <Hero />
-      <About/>
-      <Services />
-      <Banner />
-      <Banner2 />
-      <Subscribe />
-    
-      <Footer />
-    </main>
+    <>
+      {loading ? (
+        <CompanyLoader />
+      ) : (
+        <main className="overflow-x-hidden bg-white text-dark">
+          <Hero />
+          <About />
+          <Services />
+          <Banner />
+          <Banner2 />
+          <Subscribe />
+          <Footer />
+        </main>
+      )}
+    </>
   );
 };
 

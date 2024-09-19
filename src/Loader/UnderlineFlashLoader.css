@@ -1,0 +1,27 @@
+.underline-flash-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4F46E5;
+    text-transform: uppercase;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .underline-flash-loader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #4F46E5;
+    transition: width 0.5s ease;
+  }
+  
+  .underline-flash-loader:hover::after {
+    width: 100%;
+  }
+  

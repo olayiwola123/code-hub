@@ -80,7 +80,7 @@ export default function Subscribe() {
 
   return (
     <div className="relative bg-gradient-to-b from-blue-700 to-purple-700 py-20 flex flex-col items-center justify-center text-white min-h-screen">
-      {/* Background pulse animation */}
+  
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-red-400 opacity-30 animate-pulse"></div>
 
       <motion.h2
