@@ -41,11 +41,12 @@ const LandingPage = () => {
       ) : (
         <main className="overflow-x-hidden bg-white text-dark">
           <Hero />
-          <About />
           <Services />
+          <About />
           <Banner />
-          <Banner2 />
           <Subscribe />
+          <Banner2 />
+       
           <Footer />
         </main>
       )}

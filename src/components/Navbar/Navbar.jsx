@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-50"> 
+    <nav className="relative z-50">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -42,9 +42,9 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-           <Link to={'/login'}>
-           <button className="primary-btn">Sign In</button>
-           </Link>
+            <Link to={"/login"}>
+              <button className="primary-btn">Sign In</button>
+            </Link>
           </ul>
         </div>
 
@@ -75,11 +75,11 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-         
-          <button className="btn-primary mt-6" onClick={toggleMobileMenu}>
-              Sign In
-            </button>
-        
+            <Link to={'/login'}>
+              <button className="primary-btn mt-6" onClick={toggleMobileMenu}>
+                Sign In
+              </button>
+            </Link>
           </ul>
         </motion.div>
       )}
@@ -88,4 +88,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
