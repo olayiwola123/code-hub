@@ -6,7 +6,7 @@ const MainContent = () => {
     <div className="p-6 bg-gray-100 w-full">
       
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-purple-800">Welcome back, Olatech!</h1>
+        <h1 className="text-3xl font-bold text-purple-800">Welcome back, Neo!</h1>
         <p>Access your certificates and stay updated on your portal.</p>
       </div>
 

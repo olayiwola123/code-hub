@@ -1,90 +1,77 @@
-import React, { useState } from "react";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { FaUserCircle, FaBell } from 'react-icons/fa';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import logo from '../../assets/lagos.png'
 
-const NavbarMenu = [
-  { id: 1, title: "Home", path: "/" },
-  { id: 2, title: "Services", link: "#" },
-  { id: 3, title: "About Us", link: "#" },
-  { id: 4, title: "Our Team", path: "/team" },
-  { id: 5, title: "Contact Us", path: "/contact" },
-];
-
-const Navbar = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
+function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="relative z-50">
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="container py-10 flex justify-between items-center"
-      >
-        <div>
-          <h1 className="font-bold text-3xl text-primary">Code Hub</h1>
+    <nav className="bg-white shadow-md border-b border-gray-200 py-4 sticky top-0 z-50 ">
+      <div className="container mx-auto flex justify-between items-center px-6">
+        
+        {/* Logo and Title */}
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="Lagos State Logo" className="h-20" />
+          <h1 className="text-xl font-bold text-gray-800">Lagos State E-Certificate Portal</h1>
+        </div>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-4 items-center  text-gray-700">
+          <a href="/" className="hover:text-blue-600 transition-colors">Home</a>
+          <a href="/apply" className="hover:text-blue-600 transition-colors">Apply for Certificate</a>
+          <a href="/verify" className="hover:text-blue-600 transition-colors">Verify Certificate</a>
+          <a href="/login" className="hover:text-blue-600 transition-colors">Login</a>
         </div>
 
-        <div className="hidden lg:block">
-          <ul className="flex items-center gap-3">
-            {NavbarMenu.map((menu) => (
-              <li key={menu.id}>
-                <a
-                  href={menu.path}
-                  className="inline-block py-2 px-3 hover:text-secondary relative group cursor-pointer"
-                >
-                  <div className="w-2 h-2 bg-secondary absolute mt-4 rounded-full left-1/2 -translate-x-1/2 top-1/2 bottom-0 group-hover:block hidden"></div>
-                  {menu.title}
-                </a>
-              </li>
-            ))}
-            <Link to={"/login"}>
-              <button className="primary-btn">Sign In</button>
-            </Link>
-          </ul>
-        </div>
+        {/* Right Section */}
+        <div className="flex items-center gap-6">
+          {/* Notification Icon */}
+          <FaBell className="text-2xl text-gray-700 cursor-pointer hidden md:block" />
+          
+          {/* User Icon with Dropdown */}
+          <div className="relative hidden md:block">
+            <FaUserCircle 
+              className="text-2xl text-gray-700 cursor-pointer" 
+              onClick={() => setMenuOpen(!menuOpen)}
+            />
+            {menuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white text-gray-700 shadow-lg rounded-lg py-2">
+                <a href="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                <a href="/settings" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                <a href="/logout" className="block px-4 py-2 hover:bg-gray-100">Logout</a>
+              </div>
+            )}
+          </div>
 
-        <div className="lg:hidden">
-          <button onClick={toggleMobileMenu} className="text-4xl">
-            {isMobileMenuOpen ? <IoMdClose /> : <IoMdMenu />}
-          </button>
+          {/* Apply Button */}
+          <a href="/apply" className="bg-green-600 text-white py-2 px-6 rounded-md font-semibold text-lg hidden md:block hover:bg-green-700 transition">
+            Apply Now
+          </a>
+
+          {/* Mobile Menu Icon */}
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <HiX className="text-2xl" /> : <HiMenuAlt4 className="text-2xl" />}
+            </button>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, x: -300 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -300 }}
-          className="fixed top-0 left-0 w-3/4 h-full bg-secondary shadow-lg z-50 flex flex-col p-4"
-        >
-          <ul className="flex flex-col gap-6 mt-8">
-            {NavbarMenu.map((menu) => (
-              <li key={menu.id}>
-                <a
-                  href={menu.path}
-                  className="text-lg text-gray-800 hover:text-primary"
-                  onClick={toggleMobileMenu}
-                >
-                  {menu.title}
-                </a>
-              </li>
-            ))}
-            <Link to={'/login'}>
-              <button className="primary-btn mt-6" onClick={toggleMobileMenu}>
-                Sign In
-              </button>
-            </Link>
-          </ul>
-        </motion.div>
+      {menuOpen && (
+        <div className="md:hidden bg-white text-gray-700 py-2 px-4 border-t border-gray-200">
+          <a href="/" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Home</a>
+          <a href="/apply" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Apply for Certificate</a>
+          <a href="/verify" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Verify Certificate</a>
+          <a href="/support" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Support</a>
+          <a href="/profile" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Profile</a>
+          <a href="/settings" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Settings</a>
+          <a href="/logout" className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</a>
+        </div>
       )}
     </nav>
   );
-};
+}
 
 export default Navbar;

@@ -21,7 +21,7 @@ const Header = () => {
 
       <div className="relative">
         <div className="flex items-center space-x-4 cursor-pointer" >
-          <span className="text-gray-700 font-bold text-2xl">Olatech</span>
+          <span className="text-gray-700 font-bold text-2xl">Neo</span>
           <img src={profile} alt="Profile" className="rounded-full w-10 h-10" onClick={toggleDropdown} />
 
     

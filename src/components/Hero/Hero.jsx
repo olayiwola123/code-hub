@@ -1,217 +1,80 @@
-// import React from "react";
-// import Navbar from "../Navbar/Navbar";
-// import { IoIosArrowRoundForward } from "react-icons/io";
-// import Blob from "../../assets/blob.svg";
-// import HeroPng from "../../assets/hero2.png";
-// import { animate, motion } from "framer-motion";
-
-// export const FadeUp = (delay) => {
-//   return {
-//     initial: {
-//       opacity: 0,
-//       y: 50,
-//     },
-//     animate: {
-//       opacity: 1,
-//       y: 0,
-//       transition: {
-//         type: "spring",
-//         stiffness: 100,
-//         duration: 0.5,
-//         delay: delay,
-//         ease: "easeInOut",
-//       },
-//     },
-//   };
-// };
-
-// const Hero = () => {
-//   return (
-//     <section className="b overflow-hidden relative">
-//       <Navbar />
-//       <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
-//         {/* Brand Info */}
-//         <div className="flex flex-col justify-center py-14 md:py-0 relative z-20">
-//           <div className="text-center md:text-left space-y-10 lg:max-w-[400px]">
-//             <motion.h1
-//               variants={FadeUp(0.6)}
-//               initial="initial"
-//               animate="animate"
-//               className="text-3xl lg:text-5xl font-bold !leading-snug"
-//             >
-//               Let's Learn to build a{" "}
-//               <span className="text-secondary">Website</span> for your business
-//             </motion.h1>
-//             <motion.div
-//               variants={FadeUp(0.8)}
-//               initial="initial"
-//               animate="animate"
-//               className="flex justify-center md:justify-start"
-//             >
-//               <button className="primary-btn flex items-center gap-2 group">
-//                 Get Started
-//                 <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 group-hover:-rotate-45 duration-300" />
-//               </button>
-//             </motion.div>
-//           </div>
-//         </div>
-//         {/* Hero Image */}
-//         <div className="flex justify-center items-center">
-//           <motion.img
-//             initial={{ x: 50, opacity: 0 }}
-//             animate={{ x: 0, opacity: 1 }}
-//             transition={{ duration: 0.6, delay: 0.4, ease: "easeInOut" }}
-//             src={HeroPng}
-//             alt=""
-//             className="w-[400px] xl:w-[600px] relative z-10 drop-shadow"
-//           />
-//           <motion.img
-//             initial={{ x: -50, opacity: 0 }}
-//             animate={{ x: 0, opacity: 1 }}
-//             transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
-//             src={Blob}
-//             alt=""
-//             className="absolute -bottom-32 w-[800px] md:w-[1500px] z-[1] hidden md:block"
-//           />
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Hero;
 import React, { useState, useEffect } from "react";
-import Navbar from "../Navbar/Navbar";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import Blob from "../../assets/blob.svg";
-import HeroPng1 from "../../assets/hero.png";
-import HeroPng2 from "../../assets/her.png";
-import { motion } from "framer-motion";
+// import { Fade } from "react-reveal";
+// import hero1 from "../../assets/girl.jpg";
+import hero1 from "../../assets/girl.jpg";
+import hero2 from "../../assets/hero.jpg";
 
-// Define FadeUp animation
-export const FadeUp = (delay) => {
-  return {
-    initial: {
-      opacity: 0,
-      y: 50,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        duration: 0.5,
-        delay: delay,
-        ease: "easeInOut",
-      },
-    },
-  };
-};
-
-// Define slide animation for text
-const slideAnimation = {
-  initial: {
-    opacity: 0,
-    y: 20,
+const slides = [
+  {
+    id: 1,
+    backgroundImage: hero1,
+    title: "Empowering Your Future with Trusted Certifications",
+    description:
+      "we provide a secure and accessible platform where you can submit requests, monitor application statuses, and download your certificates with ease",
+    primaryLink: "/sign-up",
+    secondaryLink: "/about-us",
   },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "tween",
-      duration: 0.6,
-      ease: "easeInOut",
-    },
+  {
+    id: 2,
+    backgroundImage: hero2,
+    title: "Welcome to the Lagos Certificate Portal",
+    description:
+      "The Lagos Certificate Portal serves as a comprehensive platform for residents to easily request and manage their vital certificates, including birth, marriage, and death registrations.",
+    primaryLink: "/sign-up",
+    secondaryLink: "/about-us",
   },
-};
+];
 
-// Define slide animation for images
-const imageAnimation = {
-  initial: {
-    opacity: 0,
-    scale: 0.95,
-  },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      duration: 0.8,
-      stiffness: 80,
-    },
-  },
-};
-
-const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Texts and images to rotate
-  const texts = [
-    "Let's Learn to build a Website for your business",
-    "Grow Your Business with a Professional Website",
-  ];
-
-  const images = [HeroPng1, HeroPng2];
+export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [texts.length]);
+  }, []);
+
+  const { backgroundImage, title, description, primaryLink, secondaryLink } =
+    slides[currentSlide];
 
   return (
-    <section className="bg-light overflow-hidden relative"> {/* Added pt-16 for spacing */}
-      <Navbar />
-      <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
-        {/* Brand Info */}
-        <div className="flex flex-col justify-center py-14 md:py-0 relative z-20">
-          <div className="text-center md:text-left space-y-10 lg:max-w-[400px]">
-            <motion.h1
-              variants={slideAnimation}
-              initial="initial"
-              animate="animate"
-              className="text-3xl lg:text-5xl font-bold !leading-snug"
+    <section
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+      className="relative bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out pt-24"
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+
+      <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-full lg:items-center lg:px-8">
+        <div className="max-w-xl ltr:sm:text-left rtl:sm:text-right">
+          <h1 className="text-3xl font-extrabold sm:text-4xl text-white">
+            <strong className="block font-extrabold text-tertiary">
+              {title}
+            </strong>
+          </h1>
+
+          <p className="mt-4 max-w-lg sm:text-xl/relaxed text-white">
+            {description}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4 text-center">
+            <a
+              href={primaryLink}
+              className="block w-full rounded bg-green-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-primary focus:outline-none focus:ring active:bg-primary sm:w-auto transition-opacity duration-1000 ease-in-out"
             >
-              {texts[currentIndex]}
-            </motion.h1>
-            <motion.div
-              variants={FadeUp(0.8)}
-              initial="initial"
-              animate="animate"
-              className="flex justify-center md:justify-start"
+              Get Started
+            </a>
+
+            <a
+              href={secondaryLink}
+              className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-primary shadow hover:text-primary focus:outline-none focus:ring active:text-primary sm:w-auto transition-opacity duration-1000 ease-in-out"
             >
-              <button className="primary-btn flex items-center gap-2 group">
-                Get Started
-                <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 group-hover:-rotate-45 duration-300" />
-              </button>
-            </motion.div>
+              Learn More
+            </a>
           </div>
-        </div>
-        {/* Hero Image */}
-        <div className="relative flex justify-center items-center bg-light">
-          <motion.img
-            initial="initial"
-            animate="animate"
-            variants={imageAnimation}
-            src={images[currentIndex]}
-            alt="Hero"
-            className="w-[400px] xl:w-[600px] relative z-10 drop-shadow"
-          />
-          <motion.img
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            src={Blob}
-            alt="Blob"
-            className="absolute -bottom-32 w-[800px] md:w-[1500px] z-[1] hidden md:block"
-          />
         </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
