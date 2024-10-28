@@ -7,6 +7,12 @@ import MainLayout from "./layouts/MainLayout";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Singup";
 import Team from "./components/Team/OurTeam";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Payment from "./components/General/Payment";
+import Notifications from "./components/General/NotificationsPage";
+import SupportPage from "./components/General/SupportPage";
+import CertificatesPage from "./components/General/CertificatesPage";
+import SchedulePage from "./components/General/SchedulePage";
 
 
 const App = () => {
@@ -14,13 +20,21 @@ const App = () => {
     <Router>
       <Routes>
     
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Dashboard />} />
 
       
         <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
         <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
         <Route path="/sign-up" element={<MainLayout><Signup /></MainLayout>} />
         <Route path="/team" element={<MainLayout><Team /></MainLayout>} />
+        <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
+        <Route path="/sign-up" element={<MainLayout><Signup /></MainLayout>} /> 
+        <Route path="/dashboard" element={<><Dashboard /></>} /> 
+        <Route path="/payment-page" element={<><Payment /></>} /> 
+        <Route path="/notification" element={<><Notifications /></>} /> 
+        <Route path="/support" element={<><SupportPage /></>} /> 
+        <Route path="/certificate" element={<><CertificatesPage /></>} /> 
+        <Route path="/schedule" element={<><SchedulePage /></>} /> 
       </Routes>
     </Router>
   );
