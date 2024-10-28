@@ -6,7 +6,7 @@ import MainContent from './MainContent';
 
 const Dashboard = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <Sidebar />
       <div className="w-full">
         <Header />
