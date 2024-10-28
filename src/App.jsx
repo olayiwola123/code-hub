@@ -15,6 +15,7 @@ import CertificatesPage from "./components/General/CertificatesPage";
 import SchedulePage from "./components/General/SchedulePage";
 import ApplyNow from "./Pages/ApplyNow";
 import VerifyCertificate from "./Pages/VerifyCertificate";
+import NotFound from "./Pages/NotFound";
 
 
 const App = ({hello}) => {
@@ -39,6 +40,7 @@ const App = ({hello}) => {
         <Route path="/schedule" element={<><SchedulePage /></>} /> 
         <Route path="/apply" element={<MainLayout><ApplyNow /></MainLayout>} /> 
         <Route path="/verify" element={<MainLayout><VerifyCertificate /></MainLayout>} /> 
+        <Route path="/no" element={<MainLayout><NotFound /></MainLayout>} /> 
       </Routes>
     </Router>
   );

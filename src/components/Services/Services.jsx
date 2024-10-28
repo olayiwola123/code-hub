@@ -7,25 +7,25 @@ const services = [
     title: "Certificate Application",
     description: "Easily apply for official government certificates online with a secure process.",
     icon: <FaCertificate size={40} className="text-blue-600" />,
-    link: "/services/certificate-application"
+    link: "/no"
   },
   {
     title: "Verification Services",
     description: "Ensure the authenticity of certificates with our verification services.",
     icon: <FaUserShield size={40} className="text-green-600" />,
-    link: "/services/verification"
+    link: "no"
   },
   {
     title: "Document Services",
     description: "Get access to additional document-related services with government authentication.",
     icon: <FaRegFileAlt size={40} className="text-yellow-600" />,
-    link: "/services/document-services"
+    link: "/no"
   },
   {
     title: "Information & Support",
     description: "Contact us for guidance and support on any certification needs.",
     icon: <FaInfoCircle size={40} className="text-red-600" />,
-    link: "/services/information-support"
+    link: "/no"
   },
 ];
 

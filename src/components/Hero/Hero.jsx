@@ -12,7 +12,7 @@ const slides = [
     description:
       "we provide a secure and accessible platform where you can submit requests, monitor application statuses, and download your certificates with ease",
     primaryLink: "/sign-up",
-    secondaryLink: "/about-us",
+    secondaryLink: "/no",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const slides = [
     description:
       "The Lagos Certificate Portal serves as a comprehensive platform for residents to easily request and manage their vital certificates, including birth, marriage, and death registrations.",
     primaryLink: "/sign-up",
-    secondaryLink: "/about-us",
+    secondaryLink: "/no",
   },
 ];
 
