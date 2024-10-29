@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Singup";
 import Team from "./components/Team/OurTeam";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Admin from "./components/Admin/Admin"
 import Payment from "./components/General/Payment";
 import Notifications from "./components/General/NotificationsPage";
 import SupportPage from "./components/General/SupportPage";
@@ -33,6 +34,7 @@ const App = ({hello}) => {
         <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
         <Route path="/sign-up" element={<MainLayout><Signup /></MainLayout>} /> 
         <Route path="/dashboard" element={<><Dashboard /></>} /> 
+        <Route path="/admin" element={<><Admin/></>} /> 
         <Route path="/payment-page" element={<><Payment /></>} /> 
         <Route path="/notification" element={<><Notifications /></>} /> 
         <Route path="/support" element={<><SupportPage /></>} /> 
