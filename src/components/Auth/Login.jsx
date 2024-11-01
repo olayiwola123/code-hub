@@ -25,7 +25,7 @@ function Login() {
         password,
       });
       toast.success(response.data.message);
-      login(); // Call login function to update authentication state
+      login(); 
       navigate('/dashboard');
     } catch (error) {
       toast.error(

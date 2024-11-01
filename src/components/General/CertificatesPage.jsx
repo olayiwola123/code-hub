@@ -1,72 +1,71 @@
-// import React from 'react';
-// import { FaDownload } from 'react-icons/fa';
-
-// const CertificatesPage = () => {
-//   return (
-//     <div className="min-h-screen flex justify-center items-center bg-gray-100">
-//       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl">
-//         <h2 className="text-3xl font-bold mb-8 text-center">Your Certificates</h2>
-
-//         <ul className="space-y-6">
-//           <li className="bg-gray-50 p-4 rounded-lg shadow-lg flex justify-between items-center">
-//             <div>
-//               <h3 className="text-lg font-semibold">Certificate of Completion</h3>
-//               <p className="text-sm text-gray-500">Issued: September 20, 2024</p>
-//             </div>
-//             <button className="flex items-center space-x-2 text-green-600">
-//               <FaDownload />
-//               <span>Download</span>
-//             </button>
-//           </li>
-          
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CertificatesPage;
 import React from 'react';
-import { FaDownload } from 'react-icons/fa';
-import Sidebar from '../Dashboard/Sidemenu';  // Importing Sidebar
-import Header from '../Dashboard/Header';    // Importing Header
+import Sidebar from '../Dashboard/Sidemenu';
+import Header from '../Dashboard/Header';
+import { FaBusinessTime, FaCertificate, FaHeart, FaHome, FaRegClock, FaUserCheck } from 'react-icons/fa';
 
-const CertificatesPage = () => {
+function Certificate() {
+  const certificates = [
+    {
+      name: 'Birth Certificate',
+      description: 'Official record of birth for residents.',
+      icon: <FaCertificate className="text-3xl text-gray-700 mb-2" />
+    },
+    {
+      name: 'Marriage Certificate',
+      description: 'Legal certificate for marriages in Lagos State.',
+      icon: <FaHeart className="text-3xl text-gray-700 mb-2" />
+    },
+    {
+      name: 'Business Registration',
+      description: 'Certificate for registered businesses.',
+      icon: <FaBusinessTime className="text-3xl text-gray-700 mb-2" />
+    },
+    {
+      name: 'Indigene Certificate',
+      description: 'Proof of Lagos State residency and indigene status.',
+      icon: <FaUserCheck className="text-3xl text-gray-700 mb-2" />
+    },
+    {
+      name: 'Death Certificate',
+      description: 'Official record of death for residents.',
+      icon: <FaRegClock className="text-3xl text-gray-700 mb-2" />
+    },
+    {
+      name: 'Property Ownership Certificate',
+      description: 'Certificate for recognized property owners in the state.',
+      icon: <FaHome className="text-3xl text-gray-700 mb-2" />
+    },
+  ];
+
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
+    <div className="flex">
       <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
+      <div className="flex-1">
         <Header />
-
-        {/* Page Content */}
-        <div className="flex-1 p-8 bg-gray-100">
-          <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Your Certificates</h2>
-
-            <ul className="space-y-6">
-              <li className="bg-gray-50 p-4 rounded-lg shadow-lg flex justify-between items-center">
-                <div>
-                  <h3 className="text-lg font-semibold">Certificate of Completion</h3>
-                  <p className="text-sm text-gray-500">Issued: September 20, 2024</p>
-                </div>
-                <button className="flex items-center space-x-2 text-green-600">
-                  <FaDownload />
-                  <span>Download</span>
-                </button>
-              </li>
-              
-              {/* Add more certificates here as needed */}
-              
-            </ul>
+        <div className="p-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Lagos State E-Certificate Portal</h1>
+          <p className="text-center mb-6 text-gray-600">
+            Select the type of certificate you need and apply online.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {certificates.map((cert, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md p-6 text-center transition-transform transform hover:scale-105 hover:shadow-lg"
+              >
+                {cert.icon}
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">{cert.name}</h2>
+                <p className="text-gray-600 mb-4">{cert.description}</p>
+                <a href='/apply' className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">
+                  Apply Now
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default CertificatesPage;
+export default Certificate;
