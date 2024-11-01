@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 function Signup() {
+  
+
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:3001/register', {
+        email: document.getElementById('email').value,
+        username: document.getElementById('name').value,
+        password: document.getElementById('password').value,
+      });
+      toast.success(response.data.message); 
+      setTimeout(() => {
+        window.location.reload(); 
+      }, 1000); 
+      
+    } catch (error) {
+      toast.error(error.response ? error.response.data : error.message);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-400 to-blue-500">
+    <div className="min-h-screen flex items-center justify-center">
       <motion.div
         className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -13,6 +36,7 @@ function Signup() {
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Sign Up</h2>
         
         <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}

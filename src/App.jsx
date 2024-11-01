@@ -16,10 +16,13 @@ import SchedulePage from "./components/General/SchedulePage";
 import ApplyNow from "./Pages/ApplyNow";
 import VerifyCertificate from "./Pages/VerifyCertificate";
 import NotFound from "./Pages/NotFound";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
 
 
 const App = ({hello}) => {
   return (
+    <AuthProvider>
     <Router>
       <Routes>
     
@@ -32,8 +35,7 @@ const App = ({hello}) => {
         <Route path="/team" element={<MainLayout><Team /></MainLayout>} />
         <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
         <Route path="/sign-up" element={<MainLayout><Signup /></MainLayout>} /> 
-        <Route path="/dashboard" element={<><Dashboard /></>} /> 
-        <Route path="/payment-page" element={<><Payment /></>} /> 
+
         <Route path="/notification" element={<><Notifications /></>} /> 
         <Route path="/support" element={<><SupportPage /></>} /> 
         <Route path="/certificate" element={<><CertificatesPage /></>} /> 
@@ -41,8 +43,12 @@ const App = ({hello}) => {
         <Route path="/apply" element={<MainLayout><ApplyNow /></MainLayout>} /> 
         <Route path="/verify" element={<MainLayout><VerifyCertificate /></MainLayout>} /> 
         <Route path="/no" element={<MainLayout><NotFound /></MainLayout>} /> 
+        
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/payment-page" element={<ProtectedRoute><Payment /></ProtectedRoute>} /> 
       </Routes>
     </Router>
+    </AuthProvider>
   );
 };
 

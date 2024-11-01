@@ -3,38 +3,16 @@ import React, { createContext, useContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    const storedToken = localStorage.getItem('token');
-    return {
-      user: storedUser ? JSON.parse(storedUser) : null,
-      token: storedToken,
-    };
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleChange = (user, token) => {
-    setAuthState({ user, token });
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
-  };
-
-  const handleLogout = () => {
-    setAuthState({ user: null, token: null });
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-  };
+  const login = () => setIsAuthenticated(true);
+  const logout = () => setIsAuthenticated(false);
 
   return (
-    <AuthContext.Provider value={{ authState, handleChange, handleLogout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuthContext = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuthContext must be used within an AuthProvider');
-  }
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);

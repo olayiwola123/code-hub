@@ -5,8 +5,6 @@ export default function VerifyCertificate() {
   return (
     <section className="bg-gray-50 py-16 flex flex-col items-center">
       <div className="container mx-auto px-6 lg:px-12 bg-white p-10 rounded-lg shadow-md">
-        
-        {/* Page Header */}
         <motion.h2
           className="text-4xl font-bold text-center text-gray-800 mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -16,15 +14,13 @@ export default function VerifyCertificate() {
           Verify a Certificate
         </motion.h2>
 
-        {/* Instructions Section */}
         <div className="mb-8 text-center text-gray-600">
           <p>Enter the unique certificate number below to verify its authenticity. Only valid certificates issued by Lagos State will be confirmed.</p>
         </div>
 
-        {/* Verification Form */}
+   
         <form className="flex flex-col items-center gap-6">
           
-          {/* Certificate Number Input */}
           <div className="w-full md:w-2/3">
             <label htmlFor="certificateNumber" className="block text-gray-700 font-semibold mb-2">Certificate Number *</label>
             <input
@@ -35,8 +31,6 @@ export default function VerifyCertificate() {
               required
             />
           </div>
-
-          {/* Verify Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="w-full md:w-1/2 mt-4 bg-green-700 text-white font-semibold py-3 rounded-md hover:bg-green-800 transition-colors"
@@ -46,7 +40,6 @@ export default function VerifyCertificate() {
           </motion.button>
         </form>
 
-        {/* Verification Result Section */}
         <div className="mt-10 p-6 text-center bg-blue-50 rounded-lg border border-blue-200 shadow-sm">
           <p className="text-gray-700">
             Enter a certificate number to see verification results here.
