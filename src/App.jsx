@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Singup";
 import Team from "./components/Team/OurTeam";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Admin from "./components/Admin/Admin"
 import Payment from "./components/General/Payment";
 import Notifications from "./components/General/NotificationsPage";
 import SupportPage from "./components/General/SupportPage";
